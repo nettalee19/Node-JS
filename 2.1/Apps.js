@@ -8,14 +8,7 @@ fs.copyFileSync('note.txt', 'note_Copy.txt')
 
 fs.renameSync('note.txt', 'new_name.txt')
 
-// const callback = (error,files) =>{
-    
-//     if(error){
-//         console.log(error)
-//     }else{
-//         console.log(files)
-//     }
-    
-// }
-// fs.readdirSync('2.1',callback)
+fs.readdirSync('./').forEach(file => {
+    console.log(file);
+});
 

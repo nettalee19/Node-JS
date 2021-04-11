@@ -11,3 +11,9 @@ const minus = less(1,5)
 
 console.log(sum)
 console.log(minus)
+
+// A: Require -we can't selectively load only the pieces we need. 
+//    Import -we can selectively load only the pieces we need.
+
+//require back end
+//import front
