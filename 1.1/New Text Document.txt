@@ -1,0 +1,8 @@
+Features of Node.js:  There are other programming languages also which we can use to build back-end services so what makes Node.js different I am going to explain.
+
+It’s easy to get started and can be used for prototyping and agile development
+It provides fast and highly scalable services
+It uses JavaScript everywhere so it’s easy for a JavaScript programmer to build back-end services using Node.js
+Source code cleaner and consistent.
+Large ecosystem for open source library.
+It has an Asynchronous or Non-blocking nature.
