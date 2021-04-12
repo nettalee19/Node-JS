@@ -76,7 +76,8 @@ yargs.command({
         },
     },
     handler: function(argv){
-        console.log('Power is: ' + (argv.num * argv.num))
+        //console.log('Power is: ' + (argv.num * argv.num))
+        console.log('Power is: ' + Math.pow(argv.num, 2))
     }
 })
 console.log(yargs.argv)

@@ -1,0 +1,22 @@
+ {
+     "users": [
+    {"id":0, "name":"netta", "capsule": 4 },
+    {"id":1, "name":"eyal", "capsule": 4 },
+    {"id":2, "name":"yosi", "capsule": 4 },
+    { "id": 0, "capsule": 4, "name": "david" },
+    { "id": 1, "capsule": 4, "name": "dima" },
+    { "id": 2, "capsule": 4, "name": "eyal" },
+    { "id": 3, "capsule": 4, "name": "adi" },
+    { "id": 4, "capsule": 4, "name": "ayelet" },
+    { "id": 5, "capsule": 4, "name": "netta" },
+    { "id": 6, "capsule": 4, "name": "yosi" },
+    { "id": 7, "capsule": 5, "name": "zehava" },
+    { "id": 8, "capsule": 5, "name": "toot" },
+    { "id": 9, "capsule": 5, "name": "yana" },
+    { "id": 10, "capsule": 5, "name": "foad" },
+    { "id": 11, "capsule": 5, "name": "david" },
+    { "id": 12, "capsule": 5, "name": "netanel" },
+    { "id": 13, "capsule": 5, "name": "mirale" }
+
+    
+]}
