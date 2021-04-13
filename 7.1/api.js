@@ -1,6 +1,6 @@
-//const request = require('request')
+const request = require('request')
 //const axios = require('axios')
-const superagent = require('superagent')
+//const superagent = require('superagent')
 
 
 //request
@@ -8,14 +8,16 @@ const superagent = require('superagent')
     //const url = 'https://www.tronalddump.io/tag/'
     const url = 'https://dog.ceo/api/breeds/list'
 
-    // request({url: url, json:true}, (error,response) =>{
-    //     if(error){
-    //         console.log("there is an error")
-    //     } else{
-    //         console.log(`${response.body.message} `)
-    //     }
-    // })
+    request({url: url, json:true}, (error,response) =>{
+        if(error){
+            console.log("there is an error")
+        } else{
+            console.log(`${response.body.message} `)
+        }
+    })
 //}
+
+
 
 
 //axios
@@ -26,10 +28,12 @@ const superagent = require('superagent')
 
 // getData()
 
+
+
 //superagent
-superagent.get(url)
-.then(response =>{
-console.log(response.body.message)
-}).catch(err=>{
-    console.log(err)
-})
+// superagent.get(url)
+// .then(response =>{
+// console.log(response.body.message)
+// }).catch(err=>{
+//     console.log(err)
+// })
