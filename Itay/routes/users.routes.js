@@ -5,7 +5,7 @@ const w = [
     {
         id: 0,
         name: "netta lee",
-        capsule:1
+        capsule: 1
     },
     {
         id: 1,
