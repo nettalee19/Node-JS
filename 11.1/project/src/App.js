@@ -9,7 +9,7 @@ function App() {
     react.useEffect(() => {
       axios.get('http://localhost:8001').then((req) =>{
         console.log(req)
-        setUsers(req.data.success.dbb.users[0])
+        setUsers(req.data.success.dbb.users)
 
       })
  
@@ -17,16 +17,17 @@ function App() {
 
   return (
     <div className="App">
-      {/* {users.map(user =>{
+      {users.map(user =>{
         return <>
           <p>ID: {user.id}</p>
           <p>Cash:{user.cash}</p>
           <p>Credit:{user.credit}</p>
+        <hr></hr>
         </>
-      })} */}
-      <p>ID: {users.id}</p>
+      })}
+      {/* <p>ID: {users.id}</p>
       <p>Cash:{users.cash}</p>
-      <p>Credit:{users.credit}</p>
+      <p>Credit:{users.credit}</p> */}
       
       {/* {users.map(user =>{
         return <> 
