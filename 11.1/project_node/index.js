@@ -23,6 +23,9 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(port,()=>{
-    console.log(`appli start at ${port}`)
-})
+// app.listen(port,()=>{
+//     console.log(`appli start at ${port}`)
+// })
+
+app.listen(process.env.PORT || 5000)
+
