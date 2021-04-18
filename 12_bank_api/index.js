@@ -9,5 +9,5 @@ app.use(bodyParser.json());
 app.use('/bank/users',usersRoute);
 
 app.listen(port,()=>{
-    console.log(`nettas start at ${port}`)
+    console.log(`bank's app start at ${port}`)
 })
