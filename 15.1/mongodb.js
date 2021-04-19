@@ -239,10 +239,11 @@ MongoClient.connect(connectionURL, {useNewUrlParser:true}, (error, client) =>{
     //db.collection('rest').deleteMany({name:"asian delight"}) 
 
     //14 Increment a specific restaurants score by 2
-    db.collection('rest').find({name:"Netta jam"}).updateOne({$inc: { "reviews.score": 2 } })
+    //db.collection('rest').find({name:"Netta jam"}).updateOne({$inc: { "reviews.score": 2 } })
+    //db.collection('rest').updateOne({name:"Netta jam"}, {$inc: { "reviews.score": 2 } })
 
     //15 decrement a specific restaurants score by 1
-
+    //db.collection('rest').updateOne({name:"Netta jam"}, {$inc: { "reviews.score": -1 } })
 
     //2.2
     // db.collection('rest').find().sort({name:1}).forEach(res =>{
@@ -256,11 +257,8 @@ MongoClient.connect(connectionURL, {useNewUrlParser:true}, (error, client) =>{
     // })
 
     //3.2 - Query how many documents you have from the restaurant collection.
-    // db.collection('rest').countDocuments({name: "Netta jam"}).toArray((error,users) =>{
-    //         console.log(users)
-    //     })
-    // db.collection('rest').count().toArray((error,users) =>{
-    //     console.log(users)
+    // db.collection('rests').find().count().then((res) => {
+    //     console.log(res)
     // })
 
     //3.3 - Write a MongoDb query to get restaurants that include reviews from a specific date.
