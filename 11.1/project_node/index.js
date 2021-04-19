@@ -14,12 +14,17 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// app.get('/',(req,res)=>{
+//    //return res.json({success : {id:12,email : 'nully@gmail.com'}})
+//    //return res.send({success : "API IS WORKING!"})
+//    console.log("this")
+//    return res.json({success : {dbb}})
+// })
+
 app.get('/',(req,res)=>{
-   //return res.json({success : {id:12,email : 'nully@gmail.com'}})
-   //return res.send({success : "API IS WORKING!"})
-   console.log("this")
-   return res.json({success : {dbb}})
+   res.json({success : {id:12 ,email : 'asfasf@asfasf.com'}})
 })
+
 
 
 
