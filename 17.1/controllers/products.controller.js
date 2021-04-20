@@ -31,7 +31,37 @@ const getProducts = (req, res) => {
     });
 }
 
+const getProduct= (req, res) =>{
+    const {pName} = req.params
+    productModel.find({name: {$regex: `${pName}`}}).then((product) =>{
+        return res.send(product)
+    })
+}
+
+const getActive= (req, res) =>{
+    productModel.find({isActive: true}).then((products) =>{
+        return res.send(products)
+    })
+}
+
+const getProdAtPrice = (req,res) =>{
+    productModel.find({'details.price': {$gte:10, $lt:500}}).then((products) =>{
+        return res.send(products)
+    })
+}
+
+const getAllCategory = (req,res) =>{
+    const {cName} = req.params
+    productModel.find({'category': {$regex: `${cName}`}}).then((products) =>{
+        return res.send(products)
+    })
+}
+
 module.exports = {
     create: createProduct,
-    getAll: getProducts
+    getAll: getProducts,
+    getProduct,
+    getActive,
+    getProdAtPrice,
+    getAllCategory
 }

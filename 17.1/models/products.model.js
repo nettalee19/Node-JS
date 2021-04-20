@@ -23,8 +23,40 @@ const Products = mongoose.model('produs',{
     details:{
         description:{
             type: String,
-            
+            required: true,
+            validate(value){
+                if(value.length < 10){
+                    throw new Error("Description must be longer than 10")
+                }
+            }
         }
+        //,
+        // price:{
+        //     type: Number,
+        //     required: true,
+        //     validate(value){
+        //         if(value < 1){
+        //             throw new Error("Price must be positive")
+        //         }
+        //     }
+        // },
+        // discount:{
+        //     type: Number,
+        //     required: false,
+        //     default: 0
+        // },
+        // images:{
+        //     type: String,
+            
+        // },
+        // phoneNumber:{
+        //     type: Number,
+            
+        // },
+        // dateAdded:{
+        //     type: Date,
+        //     default: Date.now()
+        // }
     }
 })
 
