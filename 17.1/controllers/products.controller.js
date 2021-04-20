@@ -2,19 +2,23 @@ const productModel = require('../models/products.model');
 
 
 const createProduct = (req, res) => {
-    // const data = req.body;
+
     const {name, category} = req.body;
-    // if (roomNumber < 0) {
-    //     return res.json({"error": "asfsaf"})
-    // }
+    console.log(req.body)
+    
     const product = new productModel({
         name: name,
         category: category
     });
-    product.save((err) => {
-        if (err) return res.json({"error": err})
-        return res.json({"success": room})
-    });
+    // product.save((err) => {
+    //     if (err) return res.json({"error": err})
+    //     return res.json({"success": product})
+    // });
+    product.save().then(() =>{  
+        console.log(product)
+    }).catch((error) =>{
+        console.log('Error:', error)
+    })
 
 
 }

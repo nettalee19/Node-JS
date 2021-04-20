@@ -20,47 +20,47 @@ const Products = mongoose.model('Produ',{
     isActive:{
         type: Boolean,
     },
-    details:{
-        description:{
-            type: String,
-            required: true,
-            validate(value){
-                if(value.length < 10){
-                    throw new Error("Description must be longer than 10")
-                }
-            }
-        },
-        price:{
-            type: Number,
-            required: true,
-            validate(value){
-                if(value < 1){
-                    throw new Error("Price must be positive")
-                }
-            }
-        },
-        discount:{
-            type: Number,
-            required: false,
-            default: 0
-        },
-        images:{
-            type: String,
+    // details:{
+    //     description:{
+    //         type: String,
+    //         required: true,
+    //         validate(value){
+    //             if(value.length < 10){
+    //                 throw new Error("Description must be longer than 10")
+    //             }
+    //         }
+    //     },
+    //     price:{
+    //         type: Number,
+    //         required: true,
+    //         validate(value){
+    //             if(value < 1){
+    //                 throw new Error("Price must be positive")
+    //             }
+    //         }
+    //     },
+    //     discount:{
+    //         type: Number,
+    //         required: false,
+    //         default: 0
+    //     },
+    //     images:{
+    //         type: String,
             
-        },
-        phoneNumber:{
-            type: Number,
+    //     },
+    //     phoneNumber:{
+    //         type: Number,
             
-        },
-        dateAdded:{
-            type: Date,
-            default: Date.now()
-        }
-    }
+    //     },
+    //     dateAdded:{
+    //         type: Date,
+    //         default: Date.now()
+    //     }
+    // }
 })
 
 //instance
-const prod = new Products({ 
+const product = new Products({ 
     name: "Cool Top",
     category: "Tops",
     isActive:true,
@@ -77,7 +77,7 @@ const prod = new Products({
 module.exports= Products;
 
 //to the db
-prod.save().then(() =>{  
+product.save().then(() =>{  
     console.log(prod)
 }).catch((error) =>{
     console.log('Error:', error)
