@@ -3,22 +3,24 @@ const productModel = require('../models/products.model');
 
 const createProduct = (req, res) => {
 
-    const {name, category} = req.body;
+    const {name, category, details} = req.body;
     console.log(req.body)
     
     const product = new productModel({
         name: name,
-        category: category
+        category: category,
+        details: details
     });
-    // product.save((err) => {
-    //     if (err) return res.json({"error": err})
-    //     return res.json({"success": product})
-    // });
-    product.save().then(() =>{  
-        console.log(product)
-    }).catch((error) =>{
-        console.log('Error:', error)
-    })
+    product.save((err) => {
+        if (err) return res.json({"error": err})
+        return res.json({"success": product})
+    });
+
+    // product.save().then(() =>{  
+    //     console.log(product)
+    // }).catch((error) =>{
+    //     console.log('Error:', error)
+    // })
 
 
 }
