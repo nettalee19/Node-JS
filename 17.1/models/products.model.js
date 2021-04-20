@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 // mongoose.connect('mongodb://127.0.0.1:27017/ecomm',{
 //     useNewUrlParser: true,
@@ -29,34 +30,42 @@ const Products = mongoose.model('produs',{
                     throw new Error("Description must be longer than 10")
                 }
             }
-        }
-        //,
-        // price:{
-        //     type: Number,
-        //     required: true,
-        //     validate(value){
-        //         if(value < 1){
-        //             throw new Error("Price must be positive")
-        //         }
-        //     }
-        // },
-        // discount:{
-        //     type: Number,
-        //     required: false,
-        //     default: 0
-        // },
+        },
+        price:{
+            type: Number,
+            required: true,
+            validate(value){
+                if(value < 1){
+                    throw new Error("Price must be positive")
+                }
+            }
+        },
+        discount:{
+            type: Number,
+            required: false,
+            default: 0
+        },
         // images:{
         //     type: String,
             
         // },
-        // phoneNumber:{
-        //     type: Number,
+        phoneNumber:{
+            type: String,
+            required: true,
+            // minLength: 10,
+            // maxLength: 10
+            validate(value){
+                if (!validator.isMobilePhone(value, "he-IL") ) {
+                    throw new Error("Not a valid Israeli phone")
+                }
+          
+            }
             
-        // },
-        // dateAdded:{
-        //     type: Date,
-        //     default: Date.now()
-        // }
+        },
+        dateAdded:{
+            type: Date,
+            default: Date.now()
+        }
     }
 })
 
