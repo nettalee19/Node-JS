@@ -1,0 +1,96 @@
+
+
+
+
+db.getCollection('restaurant').find({kosher:true})
+
+db.getCollection('Restaurant').update({name: 'coconut jam'}, {$set: {name: 'strawberry jam'}})
+
+db.rest.find({ "address.city": "Holon"})
+
+db.getCollection('restaurants').deleteOne({name : "blueberry jam"})
+
+db.getCollection('restaurants').deleteOne({name : "falafel 7 shekels"})
+
+db.restaurants.deleteMany([{name:"blueberry jam"},{name:"falafel 7 shekel"}])
+
+delete by id:
+db.getCollection('rest').deleteOne({"_id" : ObjectId("607d5f790481d242503cbfd4")})
+
+
+To delete all documents in a collection, pass in an empty document ({ }).
+
+db.Restaurant.deleteMany({})
+
+
+
+db.collection('resturant').find().toArray((error,users) =>{
+         console.log(users)
+     })
+
+db.collection('resturant').find({kosher:true}).toArray((error,users) =>{
+        console.log(users)
+     })
+
+
+db.collection('resturant').deleteMany().then(result =>{
+        console.log(result)
+    }).catch(err =>{
+        console.log(err)
+    })
+
+
+
+
+
+
+//1
+    db.collection('resturant').find().toArray((error,users) =>{
+        console.log(users)
+    })
+
+
+    //2
+    db.collection('resturant').find({cuisine:'asian'}).toArray((error,users) =>{
+        console.log(users)
+    })
+
+    //3
+    db.collection('resturant').find({kosher:true}).toArray((error,users) =>{
+        console.log(users)
+    })
+
+
+    //4
+    db.collection('resturant').find({"address.city":'Holon'}).toArray((error,users) =>{
+        console.log(users)
+    })
+
+
+    //5
+    // Write a MongoDb query to display a specific restaurants address
+    db.collection('resturant').find({"address.street":'Histradrut 85'}).toArray((error,users) =>{
+             console.log(users)
+     })
+
+    //1.6 - Write a MongoDb query to display a specific restaurants coordinates
+     db.collection('resturant').find({"address.coordinates":10.6774}).toArray((error,users) =>{
+        console.log(users)
+    })
+
+    //1.7. - Write a MongoDb query that should display all restaurants in ascending order by restaurant name
+//1.8 - Write a MongoDb query that should display all restaurants in ascending order by city names.
+    db.collection('resturant').find().sort({"address.city":1}).toArray((error,users) =>{
+        console.log(users)
+    })
+
+    // 1.9 - Update a specific restaurant's name
+    db.collection('resturant').updateOne({
+        name:"falafel 5 shekels"
+    }, {
+        $set:{
+           name:'Dima Resturant' 
+        }
+    })
+
+
