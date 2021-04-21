@@ -25,42 +25,89 @@ const createProduct = (req, res) => {
 
 }
 
-const getProducts = (req, res) => {
-    productModel.find().then((product) => {
-        return res.send(product)
-    });
+// 2) get products
+// const getProducts = (req, res) => {
+//     productModel.find().then((product) => {
+//         return res.send(product)
+//     });
+// }
+const getProducts = async (req, res) => {
+    const products = await productModel.find()
+    return res.send(products)
+    
 }
 
-const getProduct= (req, res) =>{
+
+//3) get one product
+// const getProduct= (req, res) =>{
+//     const {pName} = req.params
+//     productModel.find({name: {$regex: `${pName}`}}).then((product) =>{
+//         return res.send(product)
+//     })
+// }
+const getProduct= async (req, res) =>{
     const {pName} = req.params
-    productModel.find({name: {$regex: `${pName}`}}).then((product) =>{
-        return res.send(product)
-    })
+    const product = await productModel.find({name: {$regex: `${pName}`}})
+    return res.send(product)
+    
 }
 
-const getActive= (req, res) =>{
-    productModel.find({isActive: true}).then((products) =>{
-        return res.send(products)
-    })
+
+const getProductById= async (req, res) =>{
+    const {id} = req.params
+    const product = await productModel.find({_id: `${id}`})
+    return res.send(product)
+    
 }
 
-const getProdAtPrice = (req,res) =>{
-    productModel.find({'details.price': {$gte:10, $lt:500}}).then((products) =>{
-        return res.send(products)
-    })
+//4) get by active
+// const getActive= (req, res) =>{
+//     productModel.find({isActive: true}).then((products) =>{
+//         return res.send(products)
+//     })
+// }
+const getActive= async (req, res) =>{
+    const active = await productModel.find({isActive: true})
+    return res.send(active)
+    
 }
 
-const getAllCategory = (req,res) =>{
+//5) price range
+
+// const getProdAtPrice = (req,res) =>{
+//     productModel.find({'details.price': {$gte:10, $lt:500}}).then((products) =>{
+//         return res.send(products)
+//     })
+// }
+
+const getProdAtPrice = async(req,res) =>{
+    const range = await productModel.find({'details.price': {$gte:10, $lt:500}})
+    return res.send(range)
+    
+}
+
+
+
+
+// get by categoty
+// const getAllCategory = (req,res) =>{
+//     const {cName} = req.params
+//     productModel.find({'category': {$regex: `${cName}`}}).then((products) =>{
+//         return res.send(products)
+//     })
+// }
+const getAllCategory = async (req,res) =>{
     const {cName} = req.params
-    productModel.find({'category': {$regex: `${cName}`}}).then((products) =>{
-        return res.send(products)
-    })
+    const cata = await productModel.find({'category': {$regex: `${cName}`}})
+    return res.send(cata)
+    
 }
 
 module.exports = {
     create: createProduct,
     getAll: getProducts,
     getProduct,
+    getProductById,
     getActive,
     getProdAtPrice,
     getAllCategory

@@ -15,6 +15,8 @@ router.get('/',(req,res)=>{
    productControler.getProdAtPrice(req,res)
 }).get('/category/:cName',(req,res) =>{
    productControler.getAllCategory(req,res)
+}).get('/searchID/:id',(req,res) =>{
+   productControler.getProductById(req,res)
 })
 
 module.exports = router;
