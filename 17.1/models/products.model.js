@@ -20,6 +20,10 @@ const Products = mongoose.model('produs',{
     },
     isActive:{
         type: Boolean,
+        required: false,
+        unique: false,
+        default: true
+
     },
     details:{
         description:{
@@ -45,15 +49,15 @@ const Products = mongoose.model('produs',{
             required: false,
             default: 0
         },
-        images:{
-            type: [String],
-            validate(value){
-                if(value.length <2){
-                    throw new Error("Price must be positive")
-                }
-            }
+        // images:{
+        //     type: [String],
+        //     validate(value){
+        //         if(value.length <2){
+        //             throw new Error("Price must be positive")
+        //         }
+        //     }
             
-        },
+        // },
         phoneNumber:{
             type: String,
             required: true,

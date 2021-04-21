@@ -17,6 +17,12 @@ router.get('/',(req,res)=>{
    productControler.getAllCategory(req,res)
 }).get('/searchID/:id',(req,res) =>{
    productControler.getProductById(req,res)
+}).put('/updateID/:id',(req,res) =>{
+   productControler.updateActiveDiscount(req,res)
+}).delete('/',(req,res) =>{
+   productControler.deleteAll(req,res)
+}).delete('/:id',(req,res) =>{
+   productControler.deleteById(req,res)
 })
 
 module.exports = router;

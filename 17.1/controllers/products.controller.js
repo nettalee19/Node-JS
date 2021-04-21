@@ -56,7 +56,14 @@ const getProduct= async (req, res) =>{
 const getProductById= async (req, res) =>{
     const {id} = req.params
     const product = await productModel.find({_id: `${id}`})
+
+    if(!id){
+        return res.send("no such id")
+
+    }
     return res.send(product)
+
+    
     
 }
 
@@ -103,6 +110,51 @@ const getAllCategory = async (req,res) =>{
     
 }
 
+const updateActiveDiscount = async (req,res) =>{
+    const updates = Object.keys(req.body)
+    const allowedUpdate = ["isActive", "discount"]
+    const isValidOperation = updates.every((update) => allowedUpdate.includes(update))
+    const {id} = req.params
+    const {isActive, discount} = req.body
+
+    if(!isValidOperation) {
+        return res.status(400).send({error: 'Updates most be either active or discount'})
+    }
+    try {
+        const product = await productModel.findByIdAndUpdate(id, { isActive: isActive, "details.discount": discount }, {new:true, runValidators: true })
+        
+        if(!product){
+            res.status(404).send("No such product")
+        }
+        
+        return res.send(product)
+
+    } catch{
+        res.status(400).send(e)
+    }
+}
+
+const deleteAll = async (req,res) =>{
+    try{
+        const products = await productModel.deleteMany({})
+        res.send(products)
+    }
+    catch(e){
+        throw new Error(e)
+    } 
+}
+
+
+const deleteById = (req,res) =>{
+    const {id} = req.params
+
+    productModel.findOneAndDelete({_id: id}, (err,doc) =>{
+        if(err) return res.send(err)
+        if(doc) return res.send(doc)
+        return res.send({error: 'Couldnt delete, no such id'})
+    })
+}
+
 module.exports = {
     create: createProduct,
     getAll: getProducts,
@@ -110,5 +162,8 @@ module.exports = {
     getProductById,
     getActive,
     getProdAtPrice,
-    getAllCategory
+    getAllCategory,
+    updateActiveDiscount,
+    deleteAll ,
+    deleteById  
 }
